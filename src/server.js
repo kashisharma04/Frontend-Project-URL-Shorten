@@ -4,7 +4,7 @@ const http=require('http')
 const path=require('path')
 
 const { default: mongoose } = require("mongoose");
-const route = require("./src/routes/route");
+const route = require("../src/routes/route");
 require('dotenv').config();
 // const { PORT , MONGODB_CONNECT } = process.env;
 const PORT = 3000;
@@ -14,7 +14,6 @@ const app = express();
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname,'public')))
-
 
 mongoose.set('strictQuery', true)
 

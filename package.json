@@ -2,7 +2,7 @@
   "name": "url_shortner_project",
   "version": "1.0.0",
   "description": "In this project we are going to create shortner URL website.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon server.js"
