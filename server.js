@@ -6,7 +6,8 @@ const path=require('path')
 const { default: mongoose } = require("mongoose");
 const route = require("./src/routes/route");
 require('dotenv').config();
-const { PORT , MONGODB_CONNECT } = process.env;
+// const { PORT , MONGODB_CONNECT } = process.env;
+const PORT = 3000;
 
 const app = express();
 // mongoose.set()
@@ -19,7 +20,7 @@ mongoose.set('strictQuery', true)
 
 mongoose
   .connect(
-        MONGODB_CONNECT,
+    "mongodb+srv://kashisharma:1U3EnCZfQuitxgNI@cluster0.s9hkgej.mongodb.net/URL-SHORTEN-PROJECT",
     { useNewUrlParser: true}
   )
   .then(() => {
