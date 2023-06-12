@@ -21,7 +21,7 @@ function shortenUrl() {
     const originalUrl = originalUrlInput.value;
   
     // Make an API request to your backend for URL shortening
-    fetch('https://immediate-fish-atom.glitch.me/url/shorten/url/shorten', {
+    fetch('https://immediate-fish-atom.glitch.me/url/shorten', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
