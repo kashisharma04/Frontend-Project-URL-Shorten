@@ -17,31 +17,32 @@ copyBtn.addEventListener('click', copyUrl);
 //   shortenedUrlInput.value = shortenedUrl;
 // }
 function shortenUrl() {
-  const originalUrlInput = document.getElementById('originalUrl');
-  const originalUrl = originalUrlInput.value;
-
-  // Make an API request to your backend for URL shortening
-  fetch('req.headers.host/url/shorten', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ longUrl: originalUrl }),
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status) {
-        const shortenedUrl = data.data.shortUrl;
-        shortenedUrlInput.value = shortenedUrl;
-        console.log(shortenedUrl)
-      } else {
-        console.error(data.message);
-      }
+    const originalUrlInput = document.getElementById('originalUrl');
+    const originalUrl = originalUrlInput.value;
+  
+    // Make an API request to your backend for URL shortening
+    fetch('https://immediate-fish-atom.glitch.me/url/shorten/url/shorten', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ longUrl: originalUrl }),
     })
-    .catch(error => {
-      console.error(error);
-    });
+      .then(response => response.json())
+      .then(data => {
+        if (data.status) {
+          const shortenedUrl = data.data.shortUrl;
+          shortenedUrlInput.value = shortenedUrl;
+          console.log(shortenedUrl)
+        } else {
+          console.error(data.message);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
+  
 
 function copyUrl() {
   shortenedUrlInput.select();
