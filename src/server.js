@@ -1,4 +1,5 @@
-const express = require("express");
+const express = require("express")
+const cors = require('cors');
 
 const http=require('http')
 const path=require('path')
@@ -6,20 +7,22 @@ const path=require('path')
 const { default: mongoose } = require("mongoose");
 const route = require("../src/routes/route");
 require('dotenv').config();
-// const { PORT , MONGODB_CONNECT } = process.env;
-const PORT = 3000;
+const { PORT , MONGODB_CONNECT } = process.env;
 
 const app = express();
-// mongoose.set()
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname,'public')))
+// app.use(express.static(path.join(__dirname,'public')))
+
+
+app.use(express.static('public'));
+
 
 mongoose.set('strictQuery', true)
 
 mongoose
   .connect(
-    "mongodb+srv://kashisharma:1U3EnCZfQuitxgNI@cluster0.s9hkgej.mongodb.net/URL-SHORTEN-PROJECT",
+    MONGODB_CONNECT,
     { useNewUrlParser: true}
   )
   .then(() => {
@@ -28,6 +31,8 @@ mongoose
   .catch((error) => {
     console.log("Error while connecting to the database:", error.message);
   });
+
+app.use(cors())
 
 app.use("/", route);
 
